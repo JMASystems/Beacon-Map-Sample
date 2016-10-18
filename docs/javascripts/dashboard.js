@@ -20,7 +20,7 @@ module.controller("rootCtl", ['$rootScope','$scope','$log','$uibModal','$timeout
         $scope.mainTitle = '';
 
         $scope.menuList = [
-            {title:"フロア管理",url:'../html/floors.html',selected:false}];
+            {title:"フロア管理",url:'./html/floors.html',selected:false}];
 
         $scope.selectMenu = function (index) {
             for (var i = 0; i < $scope.menuList.length; i++){
