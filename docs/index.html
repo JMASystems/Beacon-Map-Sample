@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="dashboard">
+
+<head>
+    <title>BeaMap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='../bower_components/bootstrap/dist/css/bootstrap.min.css' />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/app.css" />
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../bower_components/momentjs/min/moment.min.js"></script>
+    <script src="../bower_components/momentjs/min/locales.min.js"></script>
+    <script src="../bower_components/humanize-duration/humanize-duration.js"></script>
+    <script src="../bower_components/ngDraggable/ngDraggable.js"></script>
+    <script src="../javascripts/dashboard.js"></script>
+    <script src="../javascripts/floor.js"></script>
+</head>
+
+<body>
+
+<div ng-controller="rootCtl" class="map-dashboard">
+    <header class="l_header cf">
+        <h1 class="header__logo"><a class="logo ir" style="cursor:default;" onclick="return false;">BeaMap</a></h1>
+        <div class="header__inner">
+            <h2 class="header__name">
+                <div style="width:100%;float:left;">
+                    <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width:500px;margin-left:auto;margin-right:auto;">
+                        Beacon配置情報登録</p>
+                </div>
+                <nav class="header__navi">
+                    <ul class="header__menu" style="float:right;">
+                    </ul>
+                </nav><!-- /.header__navi -->
+            </h2>
+        </div>
+    </header>
+        <div class="l_sidebar">
+            <nav class="global__navi">
+                <ul class="main__menu" ng-repeat="menu in menuList track by $index">
+                    <li class="item">
+                        <a class="icn icn__navi" ng-class="{'is-active':menu.selected}" href="#" ng-click="selectMenu($index);">{{menu.title}}</a>
+                    </li>
+                </ul><!-- /.main__menu -->
+            </nav><!-- /. -->
+            <div class=""></div>
+        </div>
+        <div class="l_main">
+            <div class="l_content">
+                <div ng-include="mainUrl">
+                </div>
+            </div>
+        </div>
+
+</div>
+
+</body>
+
+</html>

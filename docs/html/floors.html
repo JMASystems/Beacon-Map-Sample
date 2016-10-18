@@ -1,0 +1,49 @@
+<div ng-controller="floorCtrl">
+    <div id="event_page_all" style="padding-left: 30px;" class="p_event">
+        <div class="bottom content">
+            <div ng-if="loading">
+                <h2 class="header mb-20">ロードしています。</h2>
+                <img src="../images/loading.gif">
+            </div>
+            <div ng-class="{'hidden-area':loading}">
+                <div class="field">
+                    <form action="" method="">
+                        <div class="field--info floor--info">
+                            <div class="csv_file">
+                                <input type="file" style="display:none;" accept=".png, .jpg, .jpeg, .gif" file-model="file">
+                                <img style="float:left;">
+                                <input class="form-item form-item--csv js__form-csv" type="text" name="" ng-model="srcUrl" readonly="" placeholder="画像ファイルを選択して下さい" ng-click="selectFile();">
+                                <input class="hidden__csv__button" id="hidden__csv__button" style="display:none;" type="file" file-model="file">
+                                <div class="btn btn__fill ml-10 csv__file__select" ng-click="selectFile();">ファイルを選択</div>
+                            </div>
+
+                        </div>
+                            <div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)" class="beacon-drop-list">
+
+                                <div class="drop-outer" ng-repeat="obj in droppedObjects1 track by $index" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess1($data,$event)" ng-style="obj.style">
+                                    <div class="drop-cell">
+                                        {{obj.ID}}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="field--info">
+                                <h4>
+                                    <span class="title">フロア図{{selectedBeacon}}</span>
+                                </h4>
+                            </div>
+
+                            <div id="beacon-drop-map" ng-drop="true" ng-drop-success="onDropComplete2($data,$event)" ng-style="mapImgSrc" class="beacon-drop-map">
+
+                                <div class="drop-outer"  ng-repeat="obj in droppedObjects2 track by $index" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)" ng-style="obj.style">
+                                    <div class="drop-cell" ng-mouseover="selectBeacon(obj);">
+                                        {{obj.ID}}
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
